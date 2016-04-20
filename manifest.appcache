@@ -1,9 +1,9 @@
 CACHE MANIFEST
 # sw.bundle: ng-cli
-# sw.version: 7ebb3ac76ea71f6c004ff0d0a39fba36ef9d0e57
-# sw.file.hash: 4b64926f88d5ad8d84b081c65973757ba92123c9
+# sw.version: b244faeb2cb5bf097ce916c3468b7687210cafe6
+# sw.file.hash: 9e27270431dd0e36213a0a0d1aafbd1faa409265
 /app.js
-# sw.file.hash: ed75caf0a76290fb05e07e93aec20f5377380829
+# sw.file.hash: a694ddf1b9e159301ce22afb9ec5f28504524dcb
 /app.js.map
 # sw.file.hash: e26fddaea00a6f016f9fbd8944e17cdea5be8bdf
 /app/book-details/book-details.component.js
