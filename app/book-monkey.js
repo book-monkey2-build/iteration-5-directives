@@ -12,8 +12,7 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var home_component_1 = require('./home/home.component');
 var books_component_1 = require('./books/books.component');
-var form_component_1 = require('./form/form.component');
-var active_class_directive_1 = require('./directives/active-class/active-class.directive');
+var admin_component_1 = require('./admin/admin.component');
 var BookMonkeyApp = (function () {
     function BookMonkeyApp() {
     }
@@ -21,13 +20,16 @@ var BookMonkeyApp = (function () {
         router_1.RouteConfig([
             { path: 'home/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
             { path: 'books/...', name: 'Books', component: books_component_1.BooksComponent },
-            { path: 'admin/', name: 'Admin', component: form_component_1.FormComponent }
+            { path: 'admin/...', name: 'Admin', component: admin_component_1.AdminComponent }
         ]),
         core_1.Component({
             selector: 'book-monkey-app',
             moduleId: module.id,
             templateUrl: 'book-monkey.html',
-            directives: [router_1.ROUTER_DIRECTIVES, active_class_directive_1.ActiveClassDirective]
+            styles: [
+                ".router-link-active {\n      color: #ffffff !important;\n      background: #DB282C !important;\n    }"
+            ],
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
     ], BookMonkeyApp);
