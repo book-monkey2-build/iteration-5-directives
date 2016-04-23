@@ -31,7 +31,7 @@ var BookFormComponent = (function () {
         };
         if (routeData.get('mode') === 'create')
             bs.getSingle(routeParams.get('isbn'))
-                .subscribe(function (res) { return _this.myForm = _this.initFormData(book); });
+                .subscribe(function (b) { return _this.myForm = _this.initFormData(b); });
         else
             this.myForm = this.initFormData(book);
         // this allows us to manipulate the form at runtime
