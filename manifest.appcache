@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # sw.bundle: ng-cli
-# sw.version: 9726d37c4065a02c6145cd6d2eac3db2b5ea2a41
+# sw.version: 7458d73974cc99aca8f4dccbba91be9df6d193c5
 # sw.file.hash: a859b942f1079cc34dc727265edefae5bbc52a9f
 /app.js
 # sw.file.hash: 44a12ccf8e84bb3c09b18e6d7244d7a808d3b0b5
@@ -13,21 +13,21 @@ CACHE MANIFEST
 /app/book-details/book-details.component.js
 # sw.file.hash: 28653ae002157b8cb53f8b9132c1f6ffc1bdd2ac
 /app/book-details/book-details.component.js.map
-# sw.file.hash: 182e26b9629467cd75bc59d3b79cd875ee2e5bc0
+# sw.file.hash: 47c3b6a6b06f50492e8bc14036b8e669efbf8c9a
 /app/book-details/book-details.html
-# sw.file.hash: a54817a05d36f34583561711ed650a488bed2df9
+# sw.file.hash: b51baf57de9e021ab87f08bd4df6e309815de72d
 /app/book-form/book-form.component.html
 # sw.file.hash: 85bc195422451d6113f9335cefa4be324e2c7ac4
 /app/book-form/book-form.component.js
 # sw.file.hash: 99288765da5ac96d1faf0d6d59a1cf633430348d
 /app/book-form/book-form.component.js.map
-# sw.file.hash: 4be202eb27527f5f7fc7e92321635a47c05f6f39
+# sw.file.hash: da92bdcc691c4e836469be95e05658d19cae3eb4
 /app/book-list-item/book-list-item.component.html
 # sw.file.hash: 91993b27aec49d9876c05764d1a4227404eb1fa9
 /app/book-list-item/book-list-item.component.js
 # sw.file.hash: 4302484215154236f8985e5a97becb1e4ebd89e4
 /app/book-list-item/book-list-item.component.js.map
-# sw.file.hash: dc96480d0a3f930c9db32ee9079cfcba35cec0fe
+# sw.file.hash: 0895ad2730810474b393840f80bf836df15d18ca
 /app/book-list/book-list.component.html
 # sw.file.hash: b2da0f13a1837a2f476f84541223b690fa76dd80
 /app/book-list/book-list.component.js
@@ -59,14 +59,10 @@ CACHE MANIFEST
 /app/home/home.component.js
 # sw.file.hash: 7e695f0381efe337770a72d19955075226c422ad
 /app/home/home.component.js.map
-# sw.file.hash: 3c59bf3221351bbd712f1c482004f5e4aec2ec0d
+# sw.file.hash: 6131854881ddaf1f352348ea07cfd0ed036afed4
 /app/pipes/isbn-pipe/isbn-pipe.js
-# sw.file.hash: 101f968d18b556c2243ce53ff4d21004ef9a2a18
+# sw.file.hash: 6e5200f3bd9ab983478fc38f1184b9c9ceea1592
 /app/pipes/isbn-pipe/isbn-pipe.js.map
-# sw.file.hash: 37b29023aaab2ece8ff2e4a45b5c3579a45cc5b5
-/app/pipes/isbn-pipe/isbn-pipe.spec.js
-# sw.file.hash: 39d93203af0c2189dd4f786259840bb5415a9e17
-/app/pipes/isbn-pipe/isbn-pipe.spec.js.map
 # sw.file.hash: aab9de31ac57e9de57825834586ebeca35d62602
 /app/services/books/book-store.service.js
 # sw.file.hash: 11eb95d9897e61ff0a23c205b4ca213d9faa8104
@@ -91,19 +87,19 @@ CACHE MANIFEST
 /index.html
 # sw.file.hash: e5e036b749a151842a579c1f964e7e57e9abd09d
 /tsconfig.json
-# sw.file.hash: be771bd0a4170c04abff753212def2a2376a408e
+# sw.file.hash: 746890c18b33ee141e8ee6d0a6fc54c472068e43
 /vendor/angular2/bundles/angular2-polyfills.js
-# sw.file.hash: f37cd2b1aaaae47ad6abb1c295764f13c0feaf54
+# sw.file.hash: dd155290f830ef52ef03dabc9b004c4b2a710e10
 /vendor/angular2/bundles/angular2.dev.js
-# sw.file.hash: e161d053cf096f7e43daa9aafc58026972429e6c
+# sw.file.hash: 559c0c6bbad394061c0e38c840ed5fcbf9576586
 /vendor/angular2/bundles/http.dev.js
-# sw.file.hash: 7f4f438fda4e4eade76812d3f6186ec78bbe612d
+# sw.file.hash: 9aa4f4804ec5ad96e653d65ccf9f5103305f2089
 /vendor/angular2/bundles/router.dev.js
-# sw.file.hash: e25faa64f759f35d881efc242e26c20440479897
+# sw.file.hash: a9e6ea0af015940874abe43a535710db220cce86
 /vendor/angular2/bundles/upgrade.dev.js
 # sw.file.hash: 2adbdc3a7b6d85ac53b76b52234f28b16c88c7b2
 /vendor/es6-shim/es6-shim.js
-# sw.file.hash: 736fe8675af5630486329adf5efe12ec7be449b1
+# sw.file.hash: 8fef432513a0468a823e74e7265cd70e6f2e18e2
 /vendor/rxjs/bundles/Rx.js
 # sw.file.hash: 03ce1b92601ef75e5734eb765ec84b5c8fb25bde
 /vendor/semantic-ui-css/semantic.css

@@ -21,11 +21,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             IsbnPipe = (function () {
                 function IsbnPipe() {
                 }
-                IsbnPipe.prototype.transform = function (value, args) {
+                IsbnPipe.prototype.transform = function (value, addPrefix) {
                     if (!value || value.length !== 10 && value.length !== 13)
                         return null;
                     var prefix = '';
-                    if (args[0]) {
+                    if (addPrefix) {
                         prefix = (value.length === 10) ? 'ISBN-10: ' : 'ISBN-13: ';
                     }
                     if (value.length === 10)
