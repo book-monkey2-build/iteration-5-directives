@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../book-list/book-list.component', '../book-details/book-details.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../book-list/index', '../book-details/index'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../book-list/book-list.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, book_list_component_1, book_details_component_1;
+    var core_1, router_1, index_1, index_2;
     var BooksComponent;
     return {
         setters:[
@@ -20,11 +20,11 @@ System.register(['angular2/core', 'angular2/router', '../book-list/book-list.com
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (book_list_component_1_1) {
-                book_list_component_1 = book_list_component_1_1;
+            function (index_1_1) {
+                index_1 = index_1_1;
             },
-            function (book_details_component_1_1) {
-                book_details_component_1 = book_details_component_1_1;
+            function (index_2_1) {
+                index_2 = index_2_1;
             }],
         execute: function() {
             BooksComponent = (function () {
@@ -32,8 +32,8 @@ System.register(['angular2/core', 'angular2/router', '../book-list/book-list.com
                 }
                 BooksComponent = __decorate([
                     router_1.RouteConfig([
-                        { path: '/list', name: 'List', component: book_list_component_1.BookListComponent, useAsDefault: true },
-                        { path: '/:isbn', name: 'Details', component: book_details_component_1.BookDetailsComponent }
+                        { path: '/list', name: 'List', component: index_1.BookListComponent, useAsDefault: true },
+                        { path: '/:isbn', name: 'Details', component: index_2.BookDetailsComponent }
                     ]),
                     core_1.Component({
                         directives: [router_1.RouterOutlet],

@@ -38,7 +38,7 @@ System.register(['angular2/core', 'angular2/router', '../book-list-item/book-lis
                 BookListComponent = __decorate([
                     core_1.Component({
                         selector: 'book-list',
-                        directives: [book_list_item_component_1.BookListItem, router_1.RouterLink],
+                        directives: [book_list_item_component_1.BookListItemComponent, router_1.RouterLink],
                         moduleId: __moduleName,
                         templateUrl: 'book-list.component.html',
                         providers: [book_store_service_1.BookStoreService]
