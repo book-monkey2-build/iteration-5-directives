@@ -8,39 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var isbn_validator_1 = require('../validators/isbn.validator');
+var book_1 = require('../domain/book');
 var book_store_service_1 = require('../services/books/book-store.service');
 var BookFormComponent = (function () {
-    function BookFormComponent(fb, routeData, routeParams, bs) {
-        var _this = this;
+    function BookFormComponent(fb, bs) {
         this.fb = fb;
-        this.routeData = routeData;
-        this.routeParams = routeParams;
         this.bs = bs;
-        var book = {
-            title: '',
-            subtitle: '',
-            isbn: '',
-            description: '',
-            authors: [''],
-            thumbnails: [{ url: '', title: '' }],
-            published: new Date()
-        };
-        if (routeData.get('mode') === 'create')
-            bs.getSingle(routeParams.get('isbn'))
-                .subscribe(function (b) { return _this.myForm = _this.initFormData(b); });
-        else
-            this.myForm = this.initFormData(book);
-        // this allows us to manipulate the form at runtime
-        this.authorsControlArray = this.myForm.controls['authors'];
-        this.thumbnailsControlArray = this.myForm.controls['thumbnails'];
+        this.isUpdatingBook = false;
+        this.initBook();
     }
-    BookFormComponent.prototype.initFormData = function (book) {
+    BookFormComponent.prototype.routerOnActivate = function (curr) {
         var _this = this;
-        return this.fb.group({
+        var isbn = curr.getParam('isbn');
+        if (isbn) {
+            this.isUpdatingBook = true;
+            this.bs.getSingle(isbn)
+                .subscribe(function (b) { return _this.initBook(b); });
+        }
+    };
+    BookFormComponent.prototype.initBook = function (book) {
+        var _this = this;
+        if (!book)
+            book = new book_1.Book('', '', [''], new Date(), '', 0, [{ url: '', title: '' }], '');
+        this.myForm = this.fb.group({
             title: [book.title, common_1.Validators.required],
             subtitle: [book.subtitle],
             isbn: [book.isbn, common_1.Validators.compose([
@@ -55,6 +48,9 @@ var BookFormComponent = (function () {
             }); })),
             published: [book.published] // , DateValidator.germanDate
         });
+        // this allows us to manipulate the form at runtime
+        this.authorsControlArray = this.myForm.controls['authors'];
+        this.thumbnailsControlArray = this.myForm.controls['thumbnails'];
     };
     BookFormComponent.prototype.addAuthorControl = function () {
         this.authorsControlArray.push(this.fb.control(''));
@@ -63,11 +59,10 @@ var BookFormComponent = (function () {
         this.thumbnailsControlArray.push(this.fb.group({ url: [''], title: [''] }));
     };
     BookFormComponent.prototype.submitForm = function (formData) {
-        if (this.routeData.get('mode') === 'update')
-            this.bs.update(formData)
-                .subscribe(function (res) { return res; });
-        else
-            this.bs.create(formData)
+        this.isUpdatingBook
+            ? this.bs.update(formData.value)
+                .subscribe(function (res) { return res; })
+            : this.bs.create(formData.value)
                 .subscribe(function (res) { return res; });
     };
     BookFormComponent = __decorate([
@@ -77,7 +72,7 @@ var BookFormComponent = (function () {
             templateUrl: 'book-form.component.html',
             providers: [book_store_service_1.BookStoreService]
         }), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.RouteData, router_1.RouteParams, book_store_service_1.BookStoreService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, book_store_service_1.BookStoreService])
     ], BookFormComponent);
     return BookFormComponent;
 }());

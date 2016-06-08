@@ -8,34 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
+var core_1 = require('@angular/core');
 var ActiveClassDirective = (function () {
-    function ActiveClassDirective(_router) {
-        this._router = _router;
+    function ActiveClassDirective() {
     }
-    Object.defineProperty(ActiveClassDirective.prototype, "isActive", {
-        get: function () {
-            return this._router.isRouteActive(this._router.generate(this.routerLink));
-        },
-        enumerable: true,
-        configurable: true
-    });
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], ActiveClassDirective.prototype, "activeClass", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ActiveClassDirective.prototype, "routerLink", void 0);
-    __decorate([
-        core_1.HostBinding('class.active'), 
-        __metadata('design:type', Boolean)
-    ], ActiveClassDirective.prototype, "isActive", null);
     ActiveClassDirective = __decorate([
         core_1.Directive({ selector: '[activeClass]' }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [])
     ], ActiveClassDirective);
     return ActiveClassDirective;
 }());
