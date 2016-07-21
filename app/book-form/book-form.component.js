@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
-var book_1 = require('../domain/book');
-var book_store_service_1 = require('../services/books/book-store.service');
+var book_1 = require('../shared/book');
+var book_store_service_1 = require('../shared/book-store.service');
 var BookFormComponent = (function () {
     function BookFormComponent(fb, bs, route) {
         this.fb = fb;
