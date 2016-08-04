@@ -1,15 +1,10 @@
 "use strict";
-var IsbnValidator = (function () {
-    function IsbnValidator() {
-    }
-    IsbnValidator.isbn = function (control) {
-        var isolatedNumbers = control.value.replace(/\D/g, '');
-        var isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
-        if (!isolatedNumbers.match(isbnPattern))
-            return { "isbn": true };
-        return null;
+function validateIsbn(control) {
+    var isolatedNumbers = control.value.replace(/\D/g, '');
+    var isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
+    return isbnPattern.test(isolatedNumbers) ? null : {
+        validateIsbn: { valid: false }
     };
-    return IsbnValidator;
-}());
-exports.IsbnValidator = IsbnValidator;
+}
+exports.validateIsbn = validateIsbn;
 //# sourceMappingURL=isbn.validator.js.map

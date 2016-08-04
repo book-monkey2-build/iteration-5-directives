@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
+var isbn_validator_1 = require('../shared/isbn.validator');
 var book_1 = require('../shared/book');
 var book_store_service_1 = require('../shared/book-store.service');
 var BookFormComponent = (function () {
@@ -40,7 +41,8 @@ var BookFormComponent = (function () {
             title: [book.title, forms_1.Validators.required],
             subtitle: [book.subtitle],
             isbn: [book.isbn, forms_1.Validators.compose([
-                    forms_1.Validators.required
+                    forms_1.Validators.required,
+                    isbn_validator_1.validateIsbn
                 ])],
             description: [book.description],
             authors: this.fb.array(book.authors, forms_1.Validators.required),
@@ -48,7 +50,10 @@ var BookFormComponent = (function () {
                 url: _this.fb.control(t.url, forms_1.Validators.required),
                 title: _this.fb.control(t.title)
             }); })),
-            published: [book.published] // , DateValidator.germanDate
+            published: [
+                book.published,
+                forms_1.Validators.pattern('([1-9]|0[1-9]|(1|2)[0-9]|3[0-1])\.([1-9]|0[1-9]|1[0-2])\.[0-9]{4}')
+            ]
         });
         // this allows us to manipulate the form at runtime
         this.authorsFormArray = this.myForm.controls['authors'];
