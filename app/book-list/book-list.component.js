@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var book_list_item_component_1 = require('../book-list-item/book-list-item.component');
+var index_1 = require('../book-list-item/index');
 var book_store_service_1 = require('../shared/book-store.service');
 var BookListComponent = (function () {
     function BookListComponent(bs) {
@@ -23,9 +23,9 @@ var BookListComponent = (function () {
     BookListComponent = __decorate([
         core_1.Component({
             selector: 'book-list',
-            directives: [book_list_item_component_1.BookListItemComponent, router_1.ROUTER_DIRECTIVES],
             moduleId: module.id,
             templateUrl: 'book-list.component.html',
+            directives: [index_1.BookListItemComponent, router_1.ROUTER_DIRECTIVES],
             providers: [book_store_service_1.BookStoreService]
         }), 
         __metadata('design:paramtypes', [book_store_service_1.BookStoreService])

@@ -18,11 +18,11 @@ var BookFormComponent = (function () {
         this.fb = fb;
         this.bs = bs;
         this.route = route;
-        this.isUpdatingBook = false;
-        this.initBook();
     }
     BookFormComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.isUpdatingBook = false;
+        this.initBook();
         this.route.params.subscribe(function (params) {
             var isbn = params['isbn'];
             if (isbn) {

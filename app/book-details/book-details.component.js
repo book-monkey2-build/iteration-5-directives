@@ -19,10 +19,10 @@ var BookDetailsComponent = (function () {
         this.bs = bs;
         this.router = router;
         this.route = route;
-        this.book = new book_1.Book('', '', [''], new Date(), '', 0, [{ url: '', title: '' }], '');
     }
     BookDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.book = new book_1.Book('', '', [''], new Date(), '', 0, [{ url: '', title: '' }], '');
         this.route.params.subscribe(function (params) {
             _this.bs.getSingle(params['isbn'])
                 .subscribe(function (b) { return _this.book = b; });
