@@ -13,7 +13,7 @@ module.exports = __webpack_require__.p + "25a32416abee198dd821b0b17a198a8f.eot";
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(636);
+var content = __webpack_require__(637);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(664)(content, {});
@@ -34,10 +34,10 @@ if(false) {
 
 /***/ },
 
-/***/ 636:
+/***/ 637:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(637)();
+exports = module.exports = __webpack_require__(638)();
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);", ""]);
 
@@ -49,7 +49,7 @@ exports.push([module.i, " /*\n * # Semantic UI - 2.2.2\n * https://github.com/Se
 
 /***/ },
 
-/***/ 637:
+/***/ 638:
 /***/ function(module, exports) {
 
 /*
