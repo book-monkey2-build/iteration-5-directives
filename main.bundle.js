@@ -61644,7 +61644,7 @@ module.exports = "<h1>Buchformular</h1>\n<form novalidate\n      class=\"ui larg
 /* 645 */
 /***/ function(module, exports) {
 
-module.exports = "<img class=\"ui tiny image\" [src]=\"book?.thumbnails && book?.thumbnails[0]?.url\" bmZoom=\"medium\">\n<div class=\"content\">\n  <div class=\"header\">{{ book?.title }}</div>\n  <div class=\"description\"> {{ book?.subtitle }} </div>\n  <div class=\"metadata\">\n    <span *ngFor=\"let author of book.authors; let l=last\">\n      {{ author }}<span *ngIf=\"!l\">, </span>\n    </span>\n  </div>\n  <div class=\"extra\">{{ book?.isbn | isbn:true }}</div>\n</div>\n";
+module.exports = "<img class=\"ui tiny image\"\n     *ngIf=\"book.thumbnails != undefined\"\n     [src]=\"book.thumbnails[0].url\"><div class=\"content\">\n  <div class=\"header\">{{ book?.title }}</div>\n  <div class=\"description\"> {{ book?.subtitle }} </div>\n  <div class=\"metadata\">\n    <span *ngFor=\"let author of book.authors; let l=last\">\n      {{ author }}<span *ngIf=\"!l\">, </span>\n    </span>\n  </div>\n  <div class=\"extra\">{{ book?.isbn | isbn:true }}</div>\n</div>\n";
 
 /***/ },
 /* 646 */
