@@ -44241,10 +44241,9 @@ var BookDetailsComponent = (function () {
     BookDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.book = new __WEBPACK_IMPORTED_MODULE_2__shared_book__["a" /* Book */]('', '', [''], new Date(), '', 0, [{ url: '', title: '' }], '');
-        this.route.params.subscribe(function (params) {
-            _this.bs.getSingle(params['isbn'])
-                .subscribe(function (b) { return _this.book = b; });
-        });
+        var params = this.route.snapshot.params;
+        this.bs.getSingle(params['isbn'])
+            .subscribe(function (b) { return _this.book = b; });
     };
     BookDetailsComponent.prototype.getRating = function (num) {
         return new Array(num);
@@ -44310,14 +44309,12 @@ var BookFormComponent = (function () {
         var _this = this;
         this.initBook(this.book);
         this.myForm.valueChanges.subscribe(function () { return _this.updateErrorMessages(); });
-        this.route.params.subscribe(function (params) {
-            var isbn = params['isbn'];
-            if (isbn) {
-                _this.isUpdatingBook = true;
-                _this.bs.getSingle(isbn)
-                    .subscribe(function (b) { return _this.initBook(b); });
-            }
-        });
+        var isbn = this.route.snapshot.params['isbn'];
+        if (isbn) {
+            this.isUpdatingBook = true;
+            this.bs.getSingle(isbn)
+                .subscribe(function (b) { return _this.initBook(b); });
+        }
     };
     BookFormComponent.prototype.initBook = function (book) {
         this.myForm = this.fb.group({
