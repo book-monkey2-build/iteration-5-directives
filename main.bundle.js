@@ -44276,7 +44276,7 @@ var BookDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_book__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validation__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__book_form_error_messages__ = __webpack_require__(481);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_book_store_service__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_isbn_validator__ = __webpack_require__(485);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BookFormComponent; });
@@ -44303,7 +44303,7 @@ var BookFormComponent = (function () {
         this.route = route;
         this.router = router;
         this.book = __WEBPACK_IMPORTED_MODULE_3__shared_book__["a" /* Book */].empty();
-        this.validation = new __WEBPACK_IMPORTED_MODULE_4__validation__["a" /* Validation */]();
+        this.errors = {};
         this.isUpdatingBook = false;
     }
     BookFormComponent.prototype.ngOnInit = function () {
@@ -44365,16 +44365,18 @@ var BookFormComponent = (function () {
         }
     };
     BookFormComponent.prototype.updateErrorMessages = function () {
-        for (var field in this.validation) {
-            this.validation[field].error = '';
-            var control = this.myForm.get(field);
-            if (control && control.dirty && control.invalid) {
-                for (var key in control.errors) {
-                    this.validation[field].error = this.validation[field].messages[key];
-                }
+        this.errors = {};
+        for (var _i = 0, BookFormErrorMessages_1 = __WEBPACK_IMPORTED_MODULE_4__book_form_error_messages__["a" /* BookFormErrorMessages */]; _i < BookFormErrorMessages_1.length; _i++) {
+            var message = BookFormErrorMessages_1[_i];
+            var control = this.myForm.get(message.forControl);
+            if (control &&
+                control.dirty &&
+                control.invalid &&
+                control.errors[message.forValidator] &&
+                !this.errors[message.forControl]) {
+                this.errors[message.forControl] = message.text;
             }
         }
-        ;
     };
     BookFormComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -58523,40 +58525,24 @@ var AppModule = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Validation; });
-var Validation = (function () {
-    function Validation() {
-        return {
-            title: {
-                error: '',
-                messages: {
-                    'required': 'Ein Buchtitel muss angegeben werden',
-                }
-            },
-            isbn: {
-                error: '',
-                messages: {
-                    'required': 'Es muss eine ISBN Nummer angegeben werden',
-                    'minlength': 'Die ISBN Nummer muss mindestens 10 Zeichen enthalten',
-                    'maxlength': 'Eine ISBN Nummer kann nicht mehr als 10 Zeichen haben'
-                }
-            },
-            published: {
-                error: '',
-                messages: {
-                    'required': 'Es muss ein Erscheinungsdatum angegeben werden'
-                }
-            },
-            authors: {
-                error: '',
-                messages: {
-                    'required': 'Es muss mindestens ein Autor angegeben werden'
-                }
-            }
-        };
+/* unused harmony export ErrorMessage */
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BookFormErrorMessages; });
+var ErrorMessage = (function () {
+    function ErrorMessage(forControl, forValidator, text) {
+        this.forControl = forControl;
+        this.forValidator = forValidator;
+        this.text = text;
     }
-    return Validation;
+    return ErrorMessage;
 }());
+var BookFormErrorMessages = [
+    new ErrorMessage('title', 'required', 'Ein Buchtitel muss angegeben werden'),
+    new ErrorMessage('isbn', 'required', 'Es muss eine ISBN Nummer angegeben werden'),
+    new ErrorMessage('isbn', 'minlength', 'Die ISBN Nummer muss mindestens 10 Zeichen enthalten'),
+    new ErrorMessage('isbn', 'maxlength', 'Eine ISBN Nummer kann nicht mehr als 10 Zeichen haben'),
+    new ErrorMessage('published', 'required', 'Es muss ein Erscheinungsdatum angegeben werden'),
+    new ErrorMessage('author', 'required', 'Es muss ein Autor angegeben werden'),
+];
 
 
 /***/ },
@@ -61638,7 +61624,7 @@ module.exports = "<div class=\"ui grid\" *ngIf=\"book\">\n  <div class=\"four wi
 /* 644 */
 /***/ function(module, exports) {
 
-module.exports = "<h1>Buchformular</h1>\n<form novalidate\n      class=\"ui large form\"\n      [formGroup]=\"myForm\"\n      (ngSubmit)=\"submitForm()\">\n\n  <div class=\"field\">\n    <label>Buchtitel</label>\n    <input formControlName=\"title\">\n    <div *ngIf=\"validation.title.error\" class=\"ui negative message\">\n      {{ validation.title.error }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Untertitel</label>\n    <input formControlName=\"subtitle\">\n  </div>\n  <div class=\"field\">\n    <label>ISBN-Nummer</label>\n    <input formControlName=\"isbn\">\n    <div *ngIf=\"validation.isbn.error\" class=\"ui negative message\">\n      {{ validation.isbn.error }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Erscheinungsdatum</label>\n    <input type=\"date\" \n           useValueAsDate \n           formControlName=\"published\">\n    <div *ngIf=\"validation.published.error\" class=\"ui negative message\">\n      {{ validation.published.error }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Autoren</label>\n    <div class=\"fields\" formArrayName=\"authors\">\n      <div class=\"fifteen wide field\" *ngFor=\"let control of authors.controls; let i = index\">\n        <input [formControlName]=\"i\" placeholder=\"Autor {{i+1}}\">\n      </div>        \n      <div class=\"one wide field\">\n        <button (click)=\"addAuthorControl()\" class=\"ui large button\" type=\"button\"> + </button>\n      </div>\n    </div>\n    <div *ngIf=\"validation.authors.error\" class=\"ui negative message\">\n      {{ validation.authors.error }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Beschreibung</label>\n    <textarea formControlName=\"description\" rows=\"3\"></textarea>\n  </div>\n  <div class=\"field\">\n    <label>Bilder</label>\n    <div formArrayName=\"thumbnails\">\n      <div class=\"fields\"\n          *ngFor=\"let control of thumbnails.controls; let i = index; let l = last\" \n          [formGroupName]=\"i\">\n        <div class=\"nine wide field\">\n          <input formControlName=\"url\" placeholder=\"http://bild{{i+1}}_Url\">\n        </div>\n        <div class=\"six wide field\">\n          <input formControlName=\"title\" placeholder=\"Bild {{i+1}} Titel\">\n        </div>\n        <div class=\"one wide field\" *ngIf=\"l\">\n          <button (click)=\"addThumbnailControl()\" class=\"ui large button\" type=\"button\"> + </button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <button type=\"submit\" class=\"ui button\" [disabled]=\"!myForm.valid\">Speichern</button>\n</form>";
+module.exports = "<h1>Buchformular</h1>\n<form novalidate\n      class=\"ui large form\"\n      [formGroup]=\"myForm\"\n      (ngSubmit)=\"submitForm()\">\n\n  <div class=\"field\">\n    <label>Buchtitel</label>\n    <input formControlName=\"title\">\n    <div *ngIf=\"errors.title\" class=\"ui negative message\">\n      {{ errors.title }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Untertitel</label>\n    <input formControlName=\"subtitle\">\n  </div>\n  <div class=\"field\">\n    <label>ISBN-Nummer</label>\n    <input formControlName=\"isbn\">\n    <div *ngIf=\"errors.isbn\" class=\"ui negative message\">\n      {{ errors.isbn }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Erscheinungsdatum</label>\n    <input type=\"date\" \n           useValueAsDate \n           formControlName=\"published\">\n    <div *ngIf=\"errors.published\" class=\"ui negative message\">\n      {{ errors.published }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Autoren</label>\n    <div class=\"fields\" formArrayName=\"authors\">\n      <div class=\"fifteen wide field\" *ngFor=\"let control of authors.controls; let i = index\">\n        <input [formControlName]=\"i\" placeholder=\"Autor {{i+1}}\">\n      </div>        \n      <div class=\"one wide field\">\n        <button (click)=\"addAuthorControl()\" class=\"ui large button\" type=\"button\"> + </button>\n      </div>\n    </div>\n    <div *ngIf=\"errors.authors\" class=\"ui negative message\">\n      {{ errors.authors }}\n    </div>\n  </div>\n  <div class=\"field\">\n    <label>Beschreibung</label>\n    <textarea formControlName=\"description\" rows=\"3\"></textarea>\n  </div>\n  <div class=\"field\">\n    <label>Bilder</label>\n    <div formArrayName=\"thumbnails\">\n      <div class=\"fields\"\n          *ngFor=\"let control of thumbnails.controls; let i = index; let l = last\" \n          [formGroupName]=\"i\">\n        <div class=\"nine wide field\">\n          <input formControlName=\"url\" placeholder=\"http://bild{{i+1}}_Url\">\n        </div>\n        <div class=\"six wide field\">\n          <input formControlName=\"title\" placeholder=\"Bild {{i+1}} Titel\">\n        </div>\n        <div class=\"one wide field\" *ngIf=\"l\">\n          <button (click)=\"addThumbnailControl()\" class=\"ui large button\" type=\"button\"> + </button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <button type=\"submit\" class=\"ui button\" [disabled]=\"!myForm.valid\">Speichern</button>\n</form>";
 
 /***/ },
 /* 645 */
