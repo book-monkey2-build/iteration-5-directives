@@ -44320,10 +44320,10 @@ var BookFormComponent = (function () {
         this.myForm = this.fb.group({
             title: [book.title, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             subtitle: [book.subtitle],
-            isbn: [book.isbn, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].compose([
+            isbn: [book.isbn, [
                     __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required,
                     __WEBPACK_IMPORTED_MODULE_6__shared_isbn_validator__["a" /* validateIsbn */]
-                ])],
+                ]],
             description: [book.description],
             authors: this.buildAuthorsArray(book.authors),
             thumbnails: this.buildThumbnialsArray(book.thumbnails),
