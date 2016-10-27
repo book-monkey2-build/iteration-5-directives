@@ -42680,7 +42680,7 @@ var BookDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_book__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__book_form_error_messages__ = __webpack_require__(486);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_book_store_service__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__isbn_validator__ = __webpack_require__(487);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__book_validators__ = __webpack_require__(487);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BookFormComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -42728,7 +42728,7 @@ var BookFormComponent = (function () {
             subtitle: [this.book.subtitle],
             isbn: [this.book.isbn, [
                     __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required,
-                    __WEBPACK_IMPORTED_MODULE_6__isbn_validator__["a" /* validateIsbn */]
+                    __WEBPACK_IMPORTED_MODULE_6__book_validators__["a" /* BookValidators */].isbn
                 ]],
             description: [this.book.description],
             authors: this.buildAuthorsArray(),
@@ -57491,14 +57491,19 @@ var BookFormErrorMessages = [
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ exports["a"] = validateIsbn;
-function validateIsbn(control) {
-    var isolatedNumbers = control.value.replace(/[-]/g, '');
-    var isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
-    return isbnPattern.test(isolatedNumbers) ? null : {
-        isbnFormat: { valid: false }
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BookValidators; });
+var BookValidators = (function () {
+    function BookValidators() {
+    }
+    BookValidators.isbn = function (control) {
+        var isolatedNumbers = control.value.replace(/[-]/g, '');
+        var isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
+        return isbnPattern.test(isolatedNumbers) ? null : {
+            isbnFormat: { valid: false }
+        };
     };
-}
+    return BookValidators;
+}());
 
 
 /***/ },
