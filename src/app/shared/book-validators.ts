@@ -1,12 +1,28 @@
+import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
+import { BookStoreService } from '../shared/book-store.service';
+
+@Injectable()
 export class BookValidators {
-  static isbn(control: FormControl): { [error: string]: any } {
+
+  constructor(private bs: BookStoreService){ }
+
+  isbnFormat(control: FormControl): { [error: string]: any } {
     let isolatedNumbers = control.value.replace(/[-]/g, '');
     const isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
     return isbnPattern.test(isolatedNumbers) ? null : {
       isbnFormat: { valid: false }
     };
+  }
+
+  isbnExists(control?: FormControl): Observable<{ [error: string]: any }> {
+    return this.bs.check(control.value)
+      .map(exists => (exists === false) ? null : {
+          isbnExists: { valid: false }
+      });
+
   }
 }
 
