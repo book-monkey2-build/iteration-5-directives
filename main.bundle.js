@@ -43135,6 +43135,9 @@ var BookValidatorsService = (function () {
         this.bs = bs;
     }
     BookValidatorsService.prototype.isbnFormat = function (control) {
+        if (!control.value) {
+            return null;
+        }
         var isolatedNumbers = control.value.replace(/[-]/g, '');
         var isbnPattern = /(^\d{10}$)|(^\d{13}$)/g;
         return isbnPattern.test(isolatedNumbers) ? null : {
