@@ -43009,6 +43009,9 @@ var BookFormComponent = (function () {
         this.thumbnails.push(this.fb.group({ url: null, title: null }));
     };
     BookFormComponent.prototype.submitForm = function () {
+        // filter empty values
+        this.myForm.value.authors = this.myForm.value.authors.filter(function (el) { return el; });
+        this.myForm.value.thumbnails = this.myForm.value.thumbnails.filter(function (el) { return el.url; });
         if (this.isUpdatingBook) {
             this.bs.update(this.myForm.value).subscribe(function (res) { return res; });
             this.router.navigate(['../../books', this.myForm.value.isbn], { relativeTo: this.route });
