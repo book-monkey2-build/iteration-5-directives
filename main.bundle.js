@@ -57754,20 +57754,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 var ZoomDirective = (function () {
-    function ZoomDirective(el, renderer) {
-        this.el = el;
-        this.renderer = renderer;
+    function ZoomDirective() {
     }
     ZoomDirective.prototype.onMouseEnter = function () {
-        this.renderer.setElementClass(this.el.nativeElement, this.bmZoom || 'small', true);
+        this.isZoomed = true;
     };
     ZoomDirective.prototype.onMouseLeave = function () {
-        this.renderer.setElementClass(this.el.nativeElement, this.bmZoom || 'small', false);
+        this.isZoomed = false;
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', String)
-    ], ZoomDirective.prototype, "bmZoom", void 0);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["HostBinding"])('class.small'), 
+        __metadata('design:type', Boolean)
+    ], ZoomDirective.prototype, "isZoomed", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"])('mouseenter'), 
         __metadata('design:type', Function), 
@@ -57781,13 +57779,10 @@ var ZoomDirective = (function () {
         __metadata('design:returntype', void 0)
     ], ZoomDirective.prototype, "onMouseLeave", null);
     ZoomDirective = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[bmZoom]'
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]) === 'function' && _b) || Object])
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({ selector: '[bmZoom]' }), 
+        __metadata('design:paramtypes', [])
     ], ZoomDirective);
     return ZoomDirective;
-    var _a, _b;
 }());
 
 
