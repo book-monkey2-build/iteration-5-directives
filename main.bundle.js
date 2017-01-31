@@ -972,7 +972,7 @@ module.exports = "<img class=\"ui tiny image\"\n     *ngIf=\"book.thumbnails\"\n
 /***/ 681:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ui middle aligned selection divided list\"\n     *ngIf=\"books$ | async; else loading; let books\">\n  <a class=\"bm-book-list-item item\"\n     *ngFor=\"let b of books\"\n     [book]=\"b\"\n     [routerLink]=\"b.isbn\"></a>\n  <p *ngIf=\"!books.length\">Es wurden noch keine B&uuml;cher eingetragen.</p>\n</div>\n<template #loading>\n  <div class=\"ui active dimmer\">\n    <div class=\"ui large text loader\">Daten werden geladen...</div>\n  </div>\n</template>\n"
+module.exports = "<div class=\"ui middle aligned selection divided list\"\n     *ngIf=\"books$ | async; else loading; let books\">\n  <a class=\"bm-book-list-item item\"\n     *ngFor=\"let b of books\"\n     [book]=\"b\"\n     [routerLink]=\"b.isbn\"></a>\n  <p *ngIf=\"!books.length\">Es wurden noch keine Bücher eingetragen.</p>\n</div>\n<template #loading>\n  <div class=\"ui active dimmer\">\n    <div class=\"ui large text loader\">Daten werden geladen...</div>\n  </div>\n</template>\n"
 
 /***/ },
 
